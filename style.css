@@ -174,6 +174,64 @@ img {
   color: var(--caramel-deep);
 }
 
+.menu-toggle,
+.menu-button {
+  display: none;
+}
+
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-button {
+  align-items: center;
+  grid-template-columns: 16px auto;
+  grid-template-rows: repeat(3, 2px);
+  gap: 4px 8px;
+  align-content: center;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid rgba(67, 40, 23, 0.1);
+  border-radius: 999px;
+  color: var(--cinnamon);
+  background: var(--milk);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-button span {
+  display: block;
+  grid-column: 1;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.menu-button span:nth-child(1) {
+  grid-row: 1;
+}
+
+.menu-button span:nth-child(2) {
+  grid-row: 2;
+}
+
+.menu-button span:nth-child(3) {
+  grid-row: 3;
+}
+
+.menu-button b {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  align-self: center;
+  font: inherit;
+}
+
 .header-contact {
   display: grid;
   gap: 2px;
@@ -212,7 +270,10 @@ img {
 .section--hero {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.62fr);
-  gap: 58px;
+  grid-template-areas:
+    "content card"
+    "actions card";
+  gap: 28px 58px;
   align-items: center;
   padding-top: 118px;
   padding-bottom: 112px;
@@ -332,6 +393,7 @@ h3 {
 }
 
 .hero__content {
+  grid-area: content;
   max-width: 760px;
 }
 
@@ -437,6 +499,7 @@ h3 {
 
 .hero-card {
   position: relative;
+  grid-area: card;
   display: block;
   max-width: 440px;
   padding: 16px;
@@ -446,6 +509,10 @@ h3 {
     radial-gradient(circle at 18% 12%, rgba(233, 164, 93, 0.24), transparent 12rem),
     rgba(250, 244, 236, 0.12);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.18);
+}
+
+.hero__actions {
+  grid-area: actions;
 }
 
 .hero-card::before {
@@ -725,7 +792,7 @@ h3 {
 }
 
 .section-action {
-  margin-top: 30px;
+  margin-top: 34px;
 }
 
 .anxiety__list {
@@ -909,7 +976,7 @@ h3 {
   font-size: var(--text-size);
   font-weight: 600;
   line-height: var(--text-line);
-  text-align: left;
+  text-align: center;
 }
 
 .process-list span {
@@ -1130,8 +1197,8 @@ h3 {
 
 @media (max-width: 980px) {
   .site-header {
-    grid-template-columns: 1fr auto;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
     border-radius: 26px;
   }
 
@@ -1143,15 +1210,52 @@ h3 {
   .header-contact {
     grid-column: 2;
     grid-row: 1;
-    padding-top: 4px;
+    padding-top: 0;
+  }
+
+  .menu-button {
+    display: inline-grid;
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .main-nav {
     grid-column: 1 / -1;
     grid-row: 2;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding: 4px 4px 6px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+    transition: max-height 220ms ease, padding 220ms ease, opacity 180ms ease;
+  }
+
+  .main-nav a {
+    padding: 12px 14px;
+    border: 1px solid rgba(67, 40, 23, 0.08);
+    border-radius: 14px;
+    background: var(--milk);
+    text-align: left;
+  }
+
+  .menu-toggle:checked ~ .main-nav {
+    max-height: 360px;
+    padding-top: 12px;
+    opacity: 1;
+  }
+
+  .menu-toggle:checked + .menu-button span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .menu-toggle:checked + .menu-button span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked + .menu-button span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .section--hero,
@@ -1183,10 +1287,10 @@ h3 {
   }
 
   .site-header {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     width: calc(100% - 20px);
     margin-top: 10px;
-    gap: 14px;
+    gap: 10px;
   }
 
   .brand small {
@@ -1204,12 +1308,26 @@ h3 {
     font-size: 11px;
   }
 
+  .menu-button {
+    grid-template-columns: 16px;
+    width: 42px;
+    padding: 9px;
+    justify-content: center;
+  }
+
+  .menu-button b {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
   .main-nav {
-    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 12px;
     width: 100%;
-    overflow: visible;
   }
 
   .main-nav a {
@@ -1235,8 +1353,16 @@ h3 {
   }
 
   .section--hero {
+    grid-template-areas:
+      "content"
+      "card"
+      "actions";
     padding-top: 66px;
-    gap: 42px;
+    gap: 34px;
+  }
+
+  .section--hero .hero__actions {
+    justify-content: center;
   }
 
   h1 {

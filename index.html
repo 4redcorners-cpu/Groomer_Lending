@@ -28,6 +28,14 @@
       </span>
     </a>
 
+    <input class="menu-toggle" type="checkbox" id="menu-toggle" aria-label="Открыть меню" />
+    <label class="menu-button" for="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+      <b>Меню</b>
+    </label>
+
     <nav class="main-nav" aria-label="Основное меню">
       <a href="#about">Обо мне</a>
       <a href="#safety">Безопасность</a>
@@ -52,10 +60,6 @@
         <p class="eyebrow">Красноярск · груминг по записи</p>
         <h1 id="hero-title">Стрижка, которая подходит именно вашей собаке</h1>
         <p class="hero__lead">Привет, я Александра Лысенко. Я мастер-грумер с 20-летним опытом работы. Подбираю стрижку под конкретную собаку: по шерсти, породе, характеру и вашему запросу. Я проявляю к питомцу уважение и заботу, а результат делаю чистым, аккуратным и стойким. Работаю быстро и на совесть, без стресса и суеты, чтобы собака чувствовала себя в безопасности и доверяла мне.</p>
-
-        <div class="hero__actions">
-          <a class="button button--primary" href="#contact">Написать мастеру</a>
-        </div>
       </div>
 
       <aside class="hero-card" aria-label="Карточка мастера">
@@ -63,12 +67,15 @@
           <img src="assets/master-groomer.png" alt="Александра Лысенко стрижёт декоративную собаку в груминг-студии" />
         </div>
       </aside>
+
+      <div class="hero__actions">
+        <a class="button button--primary" href="#contact">Написать мастеру</a>
+      </div>
     </section>
 
     <section class="section split section--milk" id="about" aria-labelledby="about-title">
       <div class="section-heading split__sticky">
         <h2 id="about-title">Почему выбирают меня</h2>
-        <a class="text-link" href="#contact">Узнать больше →</a>
       </div>
 
       <div class="feature-list">
@@ -103,6 +110,10 @@
           <p>Стараюсь, чтобы результат держался долго.</p>
         </article>
       </div>
+
+      <div class="section-action">
+        <a class="button button--primary" href="#contact">Узнать больше</a>
+      </div>
     </section>
 
     <section class="section section--deep" id="safety" aria-labelledby="safety-title">
@@ -126,14 +137,15 @@
         </article>
       </div>
 
-      <a class="text-link text-link--light" href="#contact">Записаться →</a>
+      <div class="section-action">
+        <a class="button button--primary" href="#contact">Записаться</a>
+      </div>
     </section>
 
     <section class="section anxiety section--milk" aria-labelledby="anxiety-title">
       <div class="section-heading anxiety__content">
         <h2 id="anxiety-title">Почему мне можно доверить<br />стрижку вашей собаки</h2>
         <p>Я понимаю, что перед первым визитом у хозяина может быть тревога.</p>
-        <a class="text-link" href="#contact">Записаться на приём →</a>
       </div>
 
       <div class="anxiety__list">
@@ -141,6 +153,10 @@
         <span>Боюсь, что не услышат мои пожелания</span>
         <span>Боюсь, что собаке будет страшно</span>
         <span>Боюсь, что потом придётся всё переделывать</span>
+      </div>
+
+      <div class="section-action">
+        <a class="button button--primary" href="#contact">Записаться на приём</a>
       </div>
     </section>
 
@@ -192,8 +208,7 @@
           </article>
         </div>
         <div class="check-note">
-          <strong>Без сильного укорочения без согласования</strong>
-          <p>Так проще сохранить доверие, форму и спокойствие перед процедурой.</p>
+          <strong>Для меня важно сначала согласовать длину, а потом уже стричь.</strong>
         </div>
       </div>
 
@@ -216,7 +231,9 @@
         <span>Дальше проще ухаживать дома</span>
       </div>
 
-      <a class="text-link" href="#contact">Рассчитать по фото →</a>
+      <div class="section-action">
+        <a class="button button--primary" href="#contact">Рассчитать по фото</a>
+      </div>
     </section>
 
     <section class="section section--milk" id="works" aria-labelledby="works-title">
@@ -339,7 +356,9 @@
         </article>
       </div>
 
-      <a class="button button--primary" href="#contact">Подстричь любимца</a>
+      <div class="section-action">
+        <a class="button button--primary" href="#contact">Подстричь любимца</a>
+      </div>
     </section>
 
     <section class="section final section--milk" id="contact" aria-labelledby="contact-title">
